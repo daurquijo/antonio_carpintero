@@ -9,251 +9,171 @@
 	<meta name="robots" content="index, follow">
 	<meta name="description" content="Carros con Pasión ofrece consejos para el cuidado de automóviles y reflexiones espirituales basadas en la palabra de Dios. Descubre cómo mantener tu vehículo en óptimas condiciones mientras nutres tu vida espiritual.">
     <meta name="keywords" content="carros, cuidado de autos, mantenimiento vehicular, conexión espiritual, palabra de Dios, reflexiones cristianas">
+
     <title>Antonio Carpintero Mora</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 	<link rel="shortcut icon" href="assets/images/favicon.png">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
-    <!-- <link rel="stylesheet" media="screen" href="styles.css"> -->\
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <style>
-        body {
-            font-family: "Kanit", sans-serif;
-        }
-        .card {
-            width: 100%;
-            height: 100%;
-            border-radius: 20px;
-            background: #f5f5f5;
-            position: relative;
-            border: 2px solid #c3c6ce;
-            transition: 0.5s ease-out;
-            overflow: visible;
-        }
+    <link rel="stylesheet" media="screen" href="/assets/css/bootstrap.css">
+    <script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'light'
+		}
 
-        .card-details {
-            color: black;
-            gap: 0.5em;
-            display: grid;
-            place-content: center;
-        }
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
 
-        .card-button {
-            transform: translate(-50%, 125%);
-            width: 60%;
-            border-radius: 1rem;
-            border: none;
-            background-color: #008bf8;
-            color: #fff;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            opacity: 0;
-            transition: 0.3s ease-out;
-        }
+		setTheme(getPreferredTheme())
 
-        .text-body {
-            color: rgb(134, 134, 134);
-        }
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
 
-        iframe {
-            border-radius: 15px; /* Puedes ajustar el valor según tus preferencias */
-            border: 0; /* Elimina cualquier borde predeterminado */
-        }
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
 
-        /*Hover*/
-        .card:hover {
-            border-color: #008bf8;
-            box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-        }
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
 
-        .card:hover .card-button {
-            transform: translate(-50%, 50%);
-            opacity: 1;
-        }
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
 
-        .form_container {
-            width: fit-content;
-            height: fit-content;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 50px 40px 20px 40px;
-            background-color: #ffffff;
-            box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
-                0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
-                0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
-            border-radius: 11px;
-            font-family: "Inter", sans-serif;
-        }
+			showActiveTheme(getPreferredTheme())
 
-        .logo_container {
-            box-sizing: border-box;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(
-                180deg,
-                rgba(248, 248, 248, 0) 50%,
-                #f8f8f888 100%
-            );
-            border: 1px solid #f7f7f8;
-            filter: drop-shadow(0px 0.5px 0.5px #efefef)
-                drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
-            border-radius: 11px;
-        }
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
 
-        .title_container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .title {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #212121;
-        }
-
-        .subtitle {
-            font-size: 0.725rem;
-            max-width: 80%;
-            text-align: center;
-            line-height: 1.1rem;
-            color: #8b8e98;
-        }
-
-        .input_container {
-            width: 100%;
-            height: fit-content;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .content {
-            margin-top: 70px;
-            padding: 20px;
-        }
-
-        /*Text*/
-        .text-title {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        .form-container {
-            background: linear-gradient(#212121, #212121) padding-box,
-            linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
-            border: 2px solid transparent;
-            padding: 32px 24px;
-            font-size: 14px;
-            font-family: inherit;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            box-sizing: border-box;
-            border-radius: 16px;
-        }
-
-        .contenedor {
-            padding: 10px;
-            width: 980px;
-            max-width: calc(100% - 20px);
-            margin: auto;
-            margin-top: 50px;
-            color: #fff;
-            font-family: sans-serif;
-        }
-
-        .concursantes {
-            margin-top: 20px;
-            text-align: center;
-            margin: auto;
-            position: relative;
-        }
-
-        canvas {
-            margin-top: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .mark-winner {
-            position: absolute;
-            clip-path: polygon(0 10px, 60px 0, 60px 20px);
-            background: red;
-            width: 60px;
-            height: 20px;
-            top: 50%;
-            right: 18%;
-            z-index: 10;
-            box-shadow: 0 0 3px #33333399;
-        }
-
-        .bg-dark {
-            --si-bg-opacity: 1;
-            background-color: #0b0f19 !important;
-        }
-
-        .text-resalted {
-            font-family: "Holtwood One SC", slab-serif;
-            font-size: large;
-            font-weight: bold;
-        }
-
-        .text-weight {
-            font-weight: bold;
-        }
-    </style>
+			}
+		})
+		
+	</script>
 </head>
 
 <body>
-    <header class="navbar navbar-expand-lg fixed-top bg-dark">
-        <div class="container">
-            <div class="d-flex">
-                <img class="p-2" src="assets/images/logo.png" alt="antonio carpintero mora logo" style="max-width: 60px; max-height: 90px;">
-                <a class="navbar-brand p-3 text-light" href="#">Antonio Carpintero Mora</a>
-            </div>
-            <!-- Botón de hamburguesa para colapsar la barra de navegación en pantallas pequeñas -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="text-light">Menu</span>
-                <i class="bi bi-list text-light"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <nav class="d-sm-inline-flex">
-                    <ul class="navbar-nav me-auto">
+    <header class="header-sticky header-absolute fixed-top bg-transparent">
+        <!-- Logo Nav START -->
+        <nav class="navbar navbar-expand-xl">
+            <div class="container">
+                <!-- Logo START -->
+                <a class="navbar-brand me-0" href="index.html">
+                    <img class="p-2" src="assets/images/logo.png" alt="antonio carpintero mora logo" style="max-width: 60px; max-height: 90px;">
+                    <a class="navbar-brand p-3" href="#">Antonio Carpintero Mora</a>
+                </a>
+                <!-- Logo END -->
+    
+                <!-- Main navbar START -->
+                <div class="navbar-collapse collapse" id="navbarCollapse">
+                    <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
                         <li class="nav-item">
-                            <a class="btn btn-transparent text-primary" href="parejas.html">Parejas</a>
+                            <a class="btn btn-transparent" href="parejas.html">Parejas</a>
                         </li>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-transparent text-primary" data-toggle="modal" data-target="#donateModal">Donar</button>
+                            <a class="btn btn-transparent" href="donar.html">Donar</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-transparent dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="https://www.youtube.com/@UnmomentoconDios265">Un momento con Dios</a></li>
+                                <li><a class="nav-link" href="https://www.youtube.com/@Pasionporloscarros123">Pasion por los carros</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <div class="dropdown">
-                                <button class="btn btn-transparent text-primary" type="button" data-toggle="dropdown" aria-expanded="false">Categorias</button>
-                                <ul class="dropdown-menu bg-dark">
-                                    <li><a class="nav-link text-light" href="https://www.youtube.com/@UnmomentoconDios265">Un momento con Dios</a></li>
-                                    <li><a class="nav-link text-light" href="https://www.youtube.com/@Pasionporloscarros123">Pasion por los carros</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-transparent text-primary" data-toggle="modal" data-target="#storeModal"><span>Tienda</span> <i class="bi bi-cart4"></i> </button>
+                            <a class="btn btn-transparent" href="tienda.html">Tienda <i class="bi bi-cart4"></i> </a>
                         </li>
                     </ul>
-                </nav>
+                </div>
+                <!-- Main navbar END -->
+    
+                <!-- Buttons -->
+                <ul class="nav align-items-center dropdown-hover ms-sm-2">
+                    <!-- Dark mode option START -->
+                    <li class="nav-item dropdown dropdown-animation">
+                        <button class="btn btn-link mb-0 px-2 lh-1" id="bd-theme"
+                        type="button"
+                        aria-expanded="false"
+                        data-bs-toggle="dropdown"
+                        data-bs-display="static">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  class="bi bi-circle-half theme-icon-active fill-mode fa-fw" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                            <use href="#"></use>
+                        </svg>
+                        </button>
+    
+                        <ul class="dropdown-menu min-w-auto dropdown-menu-end" aria-labelledby="bd-theme">
+                            <li class="mb-1">
+                                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                                    <svg width="16" height="16" fill="currentColor" class="bi bi-brightness-high-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                                        <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                                        <use href="#"></use>
+                                    </svg>Light
+                                </button>
+                            </li>
+                            <li class="mb-1">
+                                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                                        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+                                        <use href="#"></use>
+                                    </svg>Dark
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch me-1" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                                        <use href="#"></use>
+                                    </svg>Auto
+                                </button>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Dark mode option END -->
+                    <!-- Responsive navbar toggler -->
+                    <li class="nav-item">
+                        <button class="navbar-toggler ms-sm-3 p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                            <span>Menu</span>
+                            <i class="bi bi-list"></i>
+                        </button>
+                    </li>	
+                </ul>
+    
             </div>
-        </div>
+        </nav>
+        <!-- Logo Nav END -->
     </header>
 
     <section class="container p-3 pt-5 mt-5 mb-md-2 mb-lg-3 mb-xl-4" style="position: relative;">
@@ -279,9 +199,11 @@
         <hr>
     </section>
 
+    
+
     <div class="container mt-5">
             <div class="" id="couples" role="tabpanel" aria-labelledby="couples-tab">
-                <section id="portfolio" class="bg-light py-5">
+                <section id="portfolio" class="py-5">
                     <div class="container">
                         <h2 class="text-center display-5 py-2">Parejas felices</h2>
                         <div class="text-center mb-2">
@@ -289,14 +211,14 @@
                         </div>
                         <p class="d-flex justify-content-center">
                             <span>
-                                <span class="text-resalted">Quiero compartirte: parejas felices. 
+                                <strong>Quiero compartirte: parejas felices. 
                                     <br> 
                                     Son 40 audios los cuales debes escuchar uno cada día.
                                     Estaba pasando por un momento difícil en mi matrimonio, le pedí a Dios que tomara el control, que me mostrara que debía hacer, ya que en mis fuerzas todo estaba empeorando, empecé hacer cada día algo diferente en mi matrimonio y para mi esposa por 40 días, las cosas empezaron a mejorar; hoy día aun sigo aplicándolo, y doy gracias a Dios por poderlo compartir contigo, si estás leyendo esto, es porque quieres que tu hogar sea restaurado, oro al Señor que si escuchas los audios seas ministrado y tu hogar este en bendición. Si tu espos@ no quiere hacerlo, empieza tu, haz lo tuyo, que Dios hará el resto. Bienvenido a parejas felices.
-                                </span>
+                                </strong>
                             </span>
                         </p>
-                        <span class="text-resalted">
+                        <span class="">
                             <span class="col-12">
                                 Estos audios no tienen ningún costo, pero si quieres apoyar este ministerio con una donación lo puedes hacer por:
                             </span>
@@ -522,7 +444,7 @@
                             </div>
                         </div>
                         <div>
-                            <span class="text-resalted row">
+                            <span class="row">
                                 <span class="col-12">
                                     ¿Te gustaría asistir a parejas felices? 
                                 </span>
@@ -538,253 +460,6 @@
                     </div>
                 </section>
             </div>
-    </div>
-
-    <!-- Donate Modal -->
-    <div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="donateModalLabel">Apoya nuestro ministerio.</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Proverbios 11:25:
-                    <br>
-                    El alma generosa será prosperada, y el que sacie a otros, también será saciado.
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <span class="col-12"><a href="https://recarga.nequi.com.co/bdigitalpsl/#!/" class="mb-0">Nequi: </a>3108688359</span>
-                        <span class="col-12"><a href="https://www.psepagos.co/PSEHostingUI/ShowTicketOffice.aspx?ID=2508" class="mb-0">Daviplata</a>: 3108688359</span>
-                        <span class="col-12"><a href="https://www.paypal.com/signin?/myaccount/transfer/state" class="mb-0">Paypal</a>: antoniocreativo@gmail.com</span>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Banner Modal -->
-
-    <div class="modal fade" id="bannerModal" tabindex="-1" role="dialog" aria-labelledby="bannerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <iframe class="p-2" width="100%" height="315" src="https://www.youtube.com/embed/IFCK6k2v-F4" frameborder="0" allowfullscreen></iframe>
-                <div class="modal-body">
-                    <div class="card p-2 mt-3 mb-3">
-                        <div class="card-body row">
-                            <span class="pb-3 col-12 text-danger">
-                                $10.000 COP
-                            </span>
-                            <span class="pb-3 col-12">
-                                - Sistema antirrobo cilindro de humo o niebla 
-                            </span>
-                            <span class="pb-3 col-12">
-                                *No necesita de instalación 
-                            </span>
-                            <span class="pb-3 col-12">
-                                *Que es? 
-                            </span>
-                            <span class="pb-3 col-12">
-                                Es un cilindro compacto, que contiene en su interior celulosa, que es el químico con el cual se hizo la niebla o humo.
-                            </span>
-                            <span class="pb-3 col-12">
-                                *Cómo funciona?
-                            </span>
-                            <span class="pb-3 col-12">
-                                Se activa a control remoto, a una distancia máxima de 30mts, Utiliza corriente de 12v, el humo no es tóxico ni dañino para las personas ni animales, no afecta la cojineria, tapicería, la ropa, lo que tengas en el interior de tu carro, no es corrosivo, es biodegradable, la niebla o humo dura entre 15 a 20 minutos en disiparse.
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-2 mt-3 mb-3">
-                        <div>
-                            Términos y condiciones:
-                        </div>
-                        <div class="row">
-                            <span class="col-12 mt-3">- Un sistema de seguridad, cilindro de humo para carro, una unidad, un ganador.</span>
-                            <span class="col-12 mt-3">- El regalo te lo doy cuando se cumpla la meta del 75%.</span>
-                            <span class="col-12 mt-3">- Enviar comprobante al whatsapp: 3137805663 (Dejar en la descripción del pago <span class="text-primary fs-6">“sistema de humo o niebla”</span>).</span>
-                            <span class="col-12 mt-3">- Solo aplica para personas residentes en Colombia.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-between">
-                    <div>
-                        <span><a href="https://recarga.nequi.com.co/bdigitalpsl/#!/" class="mb-0">Nequi: </a>3108688359</span>
-                        <span class="mx-3"><a href="https://www.psepagos.co/PSEHostingUI/ShowTicketOffice.aspx?ID=2508" class="mb-0">Daviplata</a>: 3108688359</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="text-center text-danger">$10.000 COP</span>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Store Modal -->
-    <div class="modal fade" id="storeModal" tabindex="-1" role="dialog" aria-labelledby="storeModal" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="storeModal">Tienda</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="card-body">
-                            <div class="row mb-5">
-                                <div class="col-md-12 mt-5">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="text-center">
-                                                <h4>Aditivo Qualitor power shot 5 en 1</h4>
-                                            </div>
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <video class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/video/upload/v1710559340/video-2_upz2xh.mp4" controls loop preload="auto"></video>
-                                                <!-- <iframe src="https://res.cloudinary.com/dffjcfxvk/video/upload/v1710559340/video-2_upz2xh.mp4"></iframe> -->
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex flex-column p-2">
-                                                <div class="col-sm-12 col-md-4 me-3">
-                                                    <img class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/image/upload/v1710559339/producto-1_ohbfhq.jpg" alt="5 en 1" style="max-height: 300px;">
-                                                </div>
-                                                <div class="col-sm-12 p-2">
-                                                    <div class="card-details">
-                                                        <p class="text-start pt-1 mb-0">Es un producto que evita el cascabeleo del motor, restaura la potencia perdida, prolonga la vida de los filtros, mejora el desempeño del motor y ahorra el consumo de combustible.</p>
-                                                        <p class="text-start pt-1 mb-0">Modo de uso: no manipular antes de haber leído y comprendido todas las precauciones.</p>
-                                                        <p class="text-start pt-1 mb-0">Mantener fuera del alcance de los niños y mascotas.</p>
-                                                        <p class="text-start pt-1 mb-0">Proteger de la luz solar. Evitar el contacto con los ojos, en caso contrario lavar con abundante agua por 15 minutos.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="container">
-                                                            <div class="p-4 rounded">
-                                                                <p class="h4 text-dark mb-3">¡Oferta Imperdible!</p>
-                                                                <p class="h4 text-danger mb-0">¡30% de Descuento!</p>
-                                                                <hr class="my-4">
-                                                                <p class="h4 text-dark mb-0">Antes: <span style="text-decoration: line-through;">$10.000</span></p>
-                                                                <p class="h4 text-success">Ahora: <span class="fw-bold">$7.000</span></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mt-5">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="text-center">
-                                                <h4>Aditivo Complete fuel system cleaner</h4>
-                                            </div>
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <video class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/video/upload/v1710559341/video-3_ncwunl.mp4" controls loop preload="auto"></video>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex flex-column p-2">
-                                                <div class="col-sm-12 col-md-6">
-                                                    <img class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/image/upload/v1710559340/producto-2_pe9jsa.jpg" alt="5 en 1" style="max-height: 300px; max-width: 300px;">
-                                                </div>
-                                                <div class="card-details">
-                                                    <p class="text-start pt-1 mb-0">Es un producto que evita el cascabeleo del motor, restaura la potencia perdida, prolonga la vida de los filtros, mejora el desempeño del motor y ahorra el consumo de combustible.</p>
-                                                    <p class="text-start pt-1 mb-0">MODO DE USO:</p>
-                                                    <p class="text-start pt-1 mb-0"> 1. Usarlo solo como se indica.</p>
-                                                    <p class="text-start pt-1 mb-0"> 2. Aplicar en espacios con buena ventilación.</p>
-                                                    <p class="text-start pt-1 mb-0"> 3. Evite el contacto del producto con la pintura de la moto.</p>
-                                                    <p class="text-start pt-1 mb-0"> 4. No aplicar directamente sobre cualquier superficie que se pueda dañar.</p>
-                                                    <p class="text-start pt-1 mb-0"> 5. No usar el envase vacío para otros fines.</p>
-                                                    <p class="text-start pt-1 mb-0"> 6. Evita el contacto con los ojos y la piel en caso de contrario lavar con abundante agua durante 15 minutos.</p>
-                                                    <p class="text-start pt-1 mb-0"> 7. Si la irritación persiste consulte un especialista.</p>
-                                                    <p class="text-start pt-1 mb-0">Se aplica cada 6000 kilómetros</p>
-                                                </div>
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="container">
-                                                                <div class="p-4 rounded">
-                                                                    <p class="h4 text-dark mb-3">¡Oferta Imperdible!</p>
-                                                                    <p class="h3 text-danger mb-0">¡20% de Descuento!</p>
-                                                                    <hr class="my-4">
-                                                                    <p class="h3 text-dark mb-0">Antes: <span style="text-decoration: line-through;">$41.900</span></p>
-                                                                    <p class="h3 text-success">Ahora: <span class="fw-bold">$33.520</span></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mt-5">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="d-flex justify-content-center align-items-center col-12">
-                                                <video class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/video/upload/v1710559340/video-1_ig3qog.mp4" controls loop preload="auto"></video>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="d-flex flex-column p-2">
-                                                <div class="col-sm-12 col-md-6">
-                                                    <img class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/image/upload/v1710559340/producto-3_sxiryg.jpg" alt="5 en 1" style="max-height: 300px; max-width: 300px;">
-                                                </div>
-                                                <div class="card-details">
-                                                    <p class="text-start pt-1 mb-0">Diseño unico: el cepillo de limpieza de neumaticos de automovil esta equipado con un mango ergonomico de calidad, que es comodo de sostener y no se desliza, por lo que es un producto premium en la industria de limpieza y cuidado del automovil.</p>
-                                                    <p class="text-start pt-1 mb-0">FACIL DE USAR: Aplicador para neumaticos de carro Las cerdas son suaves y densas, funcionan en cualquier neumatico facilmente, sin problemas.</p>
-                                                    <p class="text-start pt-1 mb-0">Difunde un brillo perfecto son similares a la forma de una plancha, mas facil acceso a las esquinas ocultas.</p>
-                                                    <p class="text-start pt-1 mb-0">Adecuado para la limpieza interior y exterior del automovil, incluyendo ruedas, neumaticos, asientos de automovil, rejilla de coche, rejillas de ventilacion, limpiaparabrisas y mucho mas.</p>
-                                                </div>
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="container">
-                                                                <div class="p-4 rounded">
-                                                                    <p class="h4 text-dark mb-3">¡Oferta Imperdible!</p>
-                                                                    <p class="h3 text-danger mb-0">¡50% de Descuento!</p>
-                                                                    <hr class="my-4">
-                                                                    <p class="h3 text-dark mb-0">Antes: <span style="text-decoration: line-through;">$70.000</span></p>
-                                                                    <p class="h3 text-success">Ahora: <span class="fw-bold">$35.000</span></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <div class="text-center">
-                        <p class="fs-1 mb-3" style="color: #333;">Métodos de Pago</p>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <h4 class="p-2">Tel: 3108688359</h4>
-                            <div class="col-2 me-3">
-                                <a href="https://www.psepagos.co/PSEHostingUI/InvoicesTicketOffice.aspx?ID=2508"><img class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/image/upload/v1710896976/daviplata_uy8ym0.jpg" alt="daviplata icon"></a>
-                            </div>
-                            <div class="col-2 me-3">
-                                <a href="https://clientes.nequi.com.co/recargas"><img class="w-100 h-100" src="https://res.cloudinary.com/dffjcfxvk/image/upload/v1710896976/nequi_primiz.jpg" alt="nequi icon"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer class="footer text-center bg-dark pt-lg-5 pt-4 pb-5">
@@ -827,19 +502,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Inicializa Slick Carousel
-        $(document).ready(function(){
-          $('.slider').slick({
-            dots: true,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 1,
-            adaptiveHeight: true
-          });
-        });
-      </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>
