@@ -87,34 +87,40 @@
     <header class="header-sticky header-absolute fixed-top bg-transparent">
         <!-- Logo Nav START -->
         <nav class="navbar navbar-expand-xl">
-            <div class="container">
+            <div class="container d-flex">
                 <!-- Logo START -->
-                <a class="navbar-brand me-0" href="index.html">
-                    <img class="p-2" src="assets/images/logo.png" alt="antonio carpintero mora logo" style="max-width: 60px; max-height: 90px;">
-                    <a class="navbar-brand p-3" href="#">Antonio Carpintero Mora</a>
-                </a>
+                <div class="col-sm-2">
+                    <a class="navbar-brand me-0" href="index.html">
+                        <img class="p-2" src="assets/images/logo.png" alt="antonio carpintero mora logo" style="max-width: 60px; max-height: 90px;">
+                        <span class="mobile-hidden">
+                            Antonio Carpintero Mora
+                        </span>
+                    </a>
+                </div>
                 <!-- Logo END -->
     
                 <!-- Main navbar START -->
-                <div class="navbar-collapse collapse" id="navbarCollapse">
-                    <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-transparent" href="parejas.html">Parejas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-transparent" href="donar.html">Donar</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="btn btn-transparent dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">Categorias</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="https://www.youtube.com/@UnmomentoconDios265">Un momento con Dios</a></li>
-                                <li><a class="nav-link" href="https://www.youtube.com/@Pasionporloscarros123">Pasion por los carros</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-transparent" href="tienda.html">Tienda <i class="bi bi-cart4"></i> </a>
-                        </li>
-                    </ul>
+                <div class="col-sm-8">
+                    <div class="navbar-collapse collapse" id="navbarCollapse">
+                        <ul class="navbar-nav navbar-nav-scroll dropdown-hover mx-auto">
+                            <li class="nav-item">
+                                <a class="btn btn-transparent" href="parejas.html">Parejas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-transparent" href="donar.html">Donar</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="btn btn-transparent dropdown-toggle" href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" href="https://www.youtube.com/@UnmomentoconDios265">Un momento con Dios</a></li>
+                                    <li><a class="nav-link" href="https://www.youtube.com/@Pasionporloscarros123">Pasion por los carros</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-transparent" href="tienda.html">Tienda <i class="bi bi-cart4"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- Main navbar END -->
     
